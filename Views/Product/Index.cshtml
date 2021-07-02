@@ -1,0 +1,154 @@
+﻿@model IEnumerable<electronics.Models.Computer>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using electronics
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Ավելացնել նոր ապրանք</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComputerBrand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComputerModel)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.OperatingSystem)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.RamSize)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.HddCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SsdCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Processor)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.GraphicCard)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.MaximumResolution)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ProcessorSpeed)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.StorageType)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.SreenSize)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscountedPrice)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.IsNew)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@Html.DisplayFor(modelItem => item.ProductGaleries.FirstOrDefault().ImageUrl)" style="width:150px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComputerBrand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComputerModel)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.OperatingSystem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RamSize)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.HddCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SsdCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Processor)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.GraphicCard)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaximumResolution)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProcessorSpeed)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.StorageType)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.SreenSize)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscountedPrice)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.IsNew)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-eye"></i></a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash text-danger"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page }),
+      new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+      {
+          DisplayItemSliceAndTotal = true,
+          ContainerDivClasses = new[] { "navigation" },
+          LiElementClasses = new[] { "page-item" },
+          PageClasses = new[] { "page-link" },
+      })
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('ul.pagination > li.disabled > a').addClass('page-link');
+        });
+    </script>
+}

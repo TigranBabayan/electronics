@@ -1,0 +1,87 @@
+﻿@model electronics.Models.Computer
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mb-5 mt-5">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3 ">
+            <div class="show " href="~/images/@Model.ProductGaleries.FirstOrDefault().ImageUrl">
+                <img src="~/images/@Model.ProductGaleries.FirstOrDefault().ImageUrl" id="show-img">
+            </div>
+            <div class="small-img">
+                <img src="~/images/next-icon.png" class="icon-left" alt="" id="prev-img">
+                <div class="small-container">
+                    <div id="small-img-roll">
+                        @foreach (var galery in Model.ProductGaleries.ToList())
+                        {
+                            <img src="~/images/@galery.ImageUrl" class="show-small-img" alt="">
+                        }
+                    </div>
+                </div>
+                <img src="~/images/next-icon.png" class="icon-right" alt="" id="next-img">
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 computerDescription mb-3 ">
+            <div class="table-responsivetable table-striped">
+                <table class="table table-sm table-borderless mb-0">
+                    <tbody>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row">Էկրան</th>
+                            <td>@Model.SreenSize @Model.MaximumResolution</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row">Պրոցեսոր</th>
+                            <td>@Model.Processor</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row">SSD</th>
+                            <td>@Model.SsdCapacity ԳԲ</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row">HDD</th>
+                            <td>@Model.HddCapacity</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row">RAM</th>
+                            <td>@Model.RamSize ԳԲ</td>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row">Գրաֆիկա</th>
+                            <td>@Model.GraphicCard</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row">Օպերացիոն համակարգ</th>
+                            <td>@Model.OperatingSystem</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3 p-0 computerDescription " style="border:1px solid #ccc">
+            @if (Model.Discount != null)
+            {
+            <h5><span class="badge badge-danger discount">-@Model.Discount%</span></h5>
+            }
+            <p class="text-center mt-5" style="font-weight:bold;font-size: 30px">@Model.ComputerBrand  @Model.ComputerModel </p>
+            <p class="text-center" style="color:#999">Գին</p>
+
+            @if (Model.DiscountedPrice != null)
+            {
+                <p class="text-center" style="font-weight:bold;font-size: 25px;color:#ccc"><s>@Model.Price դր</s></p>
+                <p class="text-center" style="color:#999">Զեղջված գին</p>
+                <p style="color:#dc3545;font-weight:bold;font-size: 30px" class="text-center">@Model.DiscountedPrice դր</p>
+            }
+            @if (Model.DiscountedPrice == null)
+            {
+                <p class="text-center" style="font-weight:bold;font-size: 30px;color:#dc3545">@Model.Price դր</p>
+
+            }
+
+            @*<div class="p-3 bg-danger text-center text-white cursor"> <a class="text-uppercase" asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" style="color:#fff !important; font-weight: 500;">Զամբյուղ</a> </div>*@
+        </div>
+        <a class="btn-block btn-danger text-center text-white text-uppercase detailsAddtoCart" asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id">Զամբյուղ</a>
+    </div>
+</div>
+
+
+

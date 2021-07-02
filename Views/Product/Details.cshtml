@@ -1,0 +1,128 @@
+﻿@model electronics.Models.Computer
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Ընդհանուր նկարագրություն</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ComputerBrand)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ComputerBrand)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ComputerModel)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ComputerModel)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.OperatingSystem)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.OperatingSystem)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.RamSize)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.RamSize)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.HddCapacity)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.HddCapacity)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.SsdCapacity)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.SsdCapacity)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Processor)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Processor)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.GraphicCard)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.GraphicCard)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.MaximumResolution)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.MaximumResolution)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ProcessorSpeed)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ProcessorSpeed)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.StorageType)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.StorageType)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.SreenSize)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.SreenSize)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.DiscountedPrice)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.DiscountedPrice)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.IsNew)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IsNew)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+            <div class=" row">
+                @foreach (var galery in Model.ProductGaleries)
+                {
+                    <div class="col-lg-6 pb-3 ">
+                        <img src="~/images/@galery.ImageUrl"
+                             class="float-left"
+                             height="200"
+                             asp-append-version="true" />
+                    </div>
+                }
+            </div>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Փոփոխել</a> |
+    <a asp-action="Index">Հետ վերադարձ</a>
+</div>

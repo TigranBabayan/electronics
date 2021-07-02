@@ -1,0 +1,47 @@
+﻿@model IEnumerable<electronics.Models.Cart>
+
+@{
+    Layout = "_Layout";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <h3>Զամբյուղ</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Ապրանքանիշ</th>
+                <th scope="col">Մոդել</th>
+                <th scope="col">Գին</th>
+                <th scope="col">Քանակ</th>
+                <th scope="col">Գումար</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var comp in Model)
+            {
+            <tr>
+                <td>@comp.Computer.ComputerBrand</td>
+                <td>@comp.Computer.ComputerModel</td>
+                <td>@comp.Computer.Price</td>
+                <td>@comp.Quantity</td>
+                <td>@(comp.Computer.Price * comp.Quantity)</td>
+                <td><a asp-controller="cart" asp-action="remove" asp-route-id="@comp.Computer.Id"><i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+</a></td>
+            </tr>
+            }
+            <tr>
+                <th scope="row">Ընդհանուր գումար</th>
+                <td colspan="4"><span class="float-right font-weight-bold">@ViewBag.total</span></td>
+        </tbody>
+    </table>
+</body>
+</html>

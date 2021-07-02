@@ -1,0 +1,121 @@
+﻿@model electronics.Models.Computer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="ComputerBrand" class="control-label"></label>
+                <input asp-for="ComputerBrand" class="form-control" />
+                <span asp-validation-for="ComputerBrand" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="ComputerModel" class="control-label"></label>
+                <input asp-for="ComputerModel" class="form-control" />
+                <span asp-validation-for="ComputerModel" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="OperatingSystem" class="control-label"></label>
+                <input asp-for="OperatingSystem" class="form-control" />
+                <span asp-validation-for="OperatingSystem" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="RamSize" class="control-label"></label>
+                <input asp-for="RamSize" class="form-control" />
+                <span asp-validation-for="RamSize" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="HddCapacity" class="control-label"></label>
+                <input asp-for="HddCapacity" class="form-control" />
+                <span asp-validation-for="HddCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="SsdCapacity" class="control-label"></label>
+                <input asp-for="SsdCapacity" class="form-control" />
+                <span asp-validation-for="SsdCapacity" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="Processor" class="control-label"></label>
+                <input asp-for="Processor" class="form-control" />
+                <span asp-validation-for="Processor" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="GraphicCard" class="control-label"></label>
+                <input asp-for="GraphicCard" class="form-control" />
+                <span asp-validation-for="GraphicCard" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="MaximumResolution" class="control-label"></label>
+                <input asp-for="MaximumResolution" class="form-control" />
+                <span asp-validation-for="MaximumResolution" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="ProcessorSpeed" class="control-label"></label>
+                <input asp-for="ProcessorSpeed" class="form-control" />
+                <span asp-validation-for="ProcessorSpeed" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="StorageType" class="control-label"></label>
+                <input asp-for="StorageType" class="form-control" />
+                <span asp-validation-for="StorageType" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="SreenSize" class="control-label"></label>
+                <input asp-for="SreenSize" class="form-control" />
+                <span asp-validation-for="SreenSize" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-4 col-md-4">
+                <label asp-for="Discount" class="control-label"></label>
+                <input asp-for="Discount" class="form-control" />
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-12 col-md-12">
+                <label asp-for="ProductImages" class="control-label"></label>
+                <input asp-for="ProductImages" class="form-control" multiple />
+                <span asp-validation-for="ProductImages" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group form-check col-lg-6 col-md-6">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsNew" /> @Html.DisplayNameFor(model => model.IsNew)
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Ավելացնել" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Հետ վերադարձ</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
